@@ -1,30 +1,23 @@
-import http from "http";
-import { readFile } from "node:fs/promises";
-import { dirname } from "node:path";
+import express from "express";
+import fs from "fs";
+import path from "path";
 import { fileURLToPath } from "node:url";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const app = express();
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const server = http.createServer(async (req, res) => {
-  const { method, url } = req;
+app.get("/", (req, res) =>
+  res.sendFile(path.join(__dirname, "views", "index.html")),
+);
 
-  if (method === "GET" && url === "/") {
-    const html = await readFile("./views/index.html", "utf8");
-    res.writeHead(200, { "Content-Type": "text/html" });
-    res.end(html);
-  } else if (method === "GET" && url === "/about") {
-    const html = await readFile("./views/about.html", "utf8");
-    res.writeHead(200, { "Content-Type": "text/html" });
-    res.end(html);
-  } else if (method === "GET" && url === "/contact-me") {
-    const html = await readFile("./views/contact-me.html", "utf8");
-    res.writeHead(200, { "Content-Type": "text/html" });
-    res.end(html);
-  } else {
-    const html = await readFile("./views/404.html", "utf8");
-    res.writeHead(404, { "Content-Type": "text/html" });
-    res.end(html);
-  }
-});
+app.get("/about", (req, res) =>
+  res.sendFile(path.join(__dirname, "views", "about.html")),
+);
 
-server.listen(8080);
+app.get("/contact-me", (req, res) =>
+  res.sendFile(path.join(__dirname, "views", "contact-me.html")),
+);
+
+app.use((_, res) => res.sendFile(path.join(__dirname, "views", "404.html")));
+
+app.listen(3000);

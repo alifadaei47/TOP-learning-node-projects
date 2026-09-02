@@ -4,17 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= title %></title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <ul>
+  <main class="page-shell">
     <% if(messages.length) { %>
-      <h1>Messages</h1>
-      <% messages.forEach(message => { %>
-        <li>User <%= message.user %> sent at <%= message.added %> : <%= message.text %></li>
-      <% }) %>
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">Message board</p>
+          <h1>Messages</h1>
+        </div>
+        <a class="button" href="/new">New message</a>
+      </header>
+      <ul class="message-list">
+        <% messages.forEach(message => { %>
+          <li class="message">
+            <div class="message-meta">
+              <strong><%= message.user %></strong>
+              <time><%= message.added %></time>
+            </div>
+            <p><%= message.text %></p>
+          </li>
+        <% }) %>
+      </ul>
     <% } else { %>
-      <h1>There is no messag</h1>
+      <div class="empty-state">
+        <p class="eyebrow">Message board</p>
+        <h1>There are no messages yet.</h1>
+        <a class="button" href="/new">Write the first one</a>
+      </div>
     <% } %>
-  </ul>
+  </main>
 </body>
 </html>

@@ -1,9 +1,26 @@
-<h1>New Message</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Message</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="page-shell form-shell">
+    <a class="back-link" href="/">&larr; Back to messages</a>
+    <p class="eyebrow">Message board</p>
+    <h1>New message</h1>
 
-<form action="/new" method="POST">
-  <input type="text" name="author" placeholder="Your name" />
+    <form action="/new" method="POST">
+      <label for="author">Your name</label>
+      <input id="author" type="text" name="author" placeholder="Your name" required />
 
-  <textarea name="message" placeholder="Your message"></textarea>
+      <label for="message">Your message</label>
+      <textarea id="message" name="message" placeholder="Your message" rows="6" required></textarea>
 
-  <button type="submit">Submit</button>
-</form>
+      <button class="button" type="submit">Post message</button>
+    </form>
+  </main>
+</body>
+</html>

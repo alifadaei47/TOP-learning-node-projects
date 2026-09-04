@@ -6,9 +6,9 @@ class UsersStorage {
     this.id = 0;
   }
 
-  addUser({ firstName, lastName }) {
+  addUser({ firstName, lastName, email, age, bio }) {
     const id = this.id;
-    this.storage[id] = { id, firstName, lastName };
+    this.storage[id] = { id, firstName, lastName, email, age, bio };
     this.id++;
   }
 
@@ -20,14 +20,22 @@ class UsersStorage {
     return this.storage[id];
   }
 
-  updateUser(id, { firstName, lastName }) {
-    this.storage[id] = { id, firstName, lastName };
+  updateUser(id, { firstName, lastName, email, age, bio }) {
+    this.storage[id] = { id, firstName, lastName, email, age, bio };
   }
 
   deleteUser(id) {
     delete this.storage[id];
   }
+
+  findUser(name, email) {
+    return Object.values(this.storage).find(
+      (user) =>
+        user.firstName.toLowerCase() === name.toLowerCase() ||
+        user.email === email,
+    );
+  }
 }
 // Rather than exporting the class, we can export an instance of the class by instantiating it.
 // This ensures only one instance of this class can exist, also known as the "singleton" pattern.
-export default new UsersStorage()
+export default new UsersStorage();

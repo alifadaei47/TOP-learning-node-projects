@@ -4,6 +4,7 @@ import * as userController from "../controllers/userController.js";
 export const userRouter = Router();
 
 userRouter.get("/", userController.userListGet);
+userRouter.get("/search", userController.searchForUser);
 userRouter.get("/create", userController.userCreateGet);
 userRouter.post("/create", userController.userCreatePost);
 userRouter.get("/:id/update", userController.userUpdateGet);

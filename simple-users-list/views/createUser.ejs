@@ -3,27 +3,38 @@
 <html>
   <head>
     <title><%= title %></title>
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <%- include("partials/errors.ejs") %>
-    <form action="/create" method="POST">
-      <label for="firstName">First Name: </label>
-      <input type="text" name="firstName" id="firstName" required />
-      <br />
-      <label for="lastName">Last Name: </label>
-      <input type="text" name="lastName" id="lastName" required />
-      <br />
-      <label for="email">Email: </label>
-      <input type="email" name="email" id="email" required />
-      <br />
-      <label for="age">Age: </label>
-      <input type="number" name="age" id="age" />
-      <br />
-      <label for="bio">Bio: </label>
-      <textarea name="bio" id="bio"></textarea>
-      <button type="submit">Submit</button>
-    </form>
-    <a href="/">Back to home</a>
+    <main class="form-page">
+      <header><h1><%= title %></h1></header>
+      <%- include("partials/errors.ejs") %>
+      <form action="/create" method="POST">
+        <div class="field">
+          <label for="firstName">First Name</label>
+          <input type="text" name="firstName" id="firstName" required />
+        </div>
+        <div class="field">
+          <label for="lastName">Last Name</label>
+          <input type="text" name="lastName" id="lastName" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" required />
+        </div>
+        <div class="field">
+          <label for="age">Age</label>
+          <input type="number" name="age" id="age" />
+        </div>
+        <div class="field">
+          <label for="bio">Bio</label>
+          <textarea name="bio" id="bio"></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit">Submit</button>
+          <a class="button subtle" href="/">Back to home</a>
+        </div>
+      </form>
+    </main>
   </body>
 </html>

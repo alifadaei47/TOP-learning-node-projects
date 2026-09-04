@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "startdev": "node --watch app.js"
+    "startdev": "node --watch app.js",
+    "build": "npm install",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",

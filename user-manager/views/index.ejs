@@ -8,17 +8,16 @@
   </head>
   <body>
     <main>
-      <h1>Username Manager</h1>
-      
+      <h1>Username Manager</h1>      
+      <a href="/new">➕ Add New User</a>
+    
+    <% if(usernames.length > 0) {%>
       <form action="/search" method="GET">
         <label for="name">Search For Usernames</label>
         <input type="text" name="name" id="name" placeholder="Enter username..." required />
         <button type="submit">Search</button>
       </form>
       
-      <a href="/new">➕ Add New User</a>
-    
-    <% if(usernames.length > 0) {%>
       <ul>
       <% usernames.forEach(username => { %>
         <li><%= username.username %></li>

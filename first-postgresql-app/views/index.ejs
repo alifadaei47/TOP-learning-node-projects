@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="/search" method="GET">
+      <label for="name">Search For Usernames: </label>
+      <input type="text" name="name" id="name" required />
+      <button type="submit">Search</button>
+    </form>
+    <a href="/new">Add new user</a>
+    
+    <% if(usernames.length > 0) {%>
+      <ul>
+      <% usernames.forEach(username => { %>
+        <li><%= username.username %></li>
+      <% }) %>
+      </ul>
+      
+      <form action="/delete" method="GET" onsubmit="return confirm('Are you sure you want to delete all usernames?');">
+        <p>Delete all usernames</p>
+        <button type="submit">Delete</button>
+      </form>
+    <% } else { %>
+      <p>There is no user!</p>
+    <% } %>
+  </body>
+</html>

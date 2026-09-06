@@ -4,6 +4,6 @@ export const usernameRouter = Router();
 
 usernameRouter.get("/", userControllers.getUsernames);
 
-usernameRouter.get("/new", userControllers.newUsernameGet);
+usernameRouter.get("/new", userControllers.createUsernameGet);
 
-usernameRouter.post("/new", userControllers.newUsernamePost);
+usernameRouter.post("/new", userControllers.createUsernamePost);

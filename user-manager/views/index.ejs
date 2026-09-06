@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>Usernames</title>
+  </head>
+  <body>
+    <main>
+      <h1>Username Manager</h1>
+      
+      <form action="/search" method="GET">
+        <label for="name">Search For Usernames</label>
+        <input type="text" name="name" id="name" placeholder="Enter username..." required />
+        <button type="submit">Search</button>
+      </form>
+      
+      <a href="/new">➕ Add New User</a>
+    
+    <% if(usernames.length > 0) {%>
+      <ul>
+      <% usernames.forEach(username => { %>
+        <li><%= username.username %></li>
+      <% }) %>
+      </ul>
+      
+      <form action="/delete" method="GET" onsubmit="return confirm('Are you sure you want to delete all usernames?');">
+        <p style="margin-top: 2rem; font-weight: 600;">Delete All Users</p>
+        <button type="submit" style="background-color: #d32f2f; border-color: #d32f2f;">🗑️ Delete</button>
+      </form>
+    <% } else { %>
+      <p style="text-align: center; margin: 2rem 0; font-style: italic;">No users yet. <a href="/new">Create one</a>!</p>
+    <% } %>
+    </main>
+  </body>
+</html>

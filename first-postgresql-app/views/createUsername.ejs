@@ -3,13 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Create Username</title>
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <form action="/new" method="POST">
-      <label for="username">Username: </label>
-      <input type="text" name="username" id="username" required />
-      <button type="submit">Submit</button>
-    </form>
+    <main>
+      <a href="/">← Back</a>
+      <h1>Create Username</h1>
+      <form action="/new" method="POST">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Enter a username..."
+          required
+        />
+        <button type="submit">Create User</button>
+      </form>
+    </main>
   </body>
 </html>

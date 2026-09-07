@@ -1,12 +1,12 @@
-import { addNewMessage } from "../db.js";
+import { addNewMessage } from "../db/queries.js";
 
-export function messageRouterGetController(req, res) {
+export async function messageRouterGetController(req, res) {
   return res.render("form", { title: "Mini Messageboard" });
 }
 
-export function messageRouterPostController(req, res) {
+export async function messageRouterPostController(req, res) {
   const { message, author } = req.body;
-  addNewMessage(message, author, new Date());
+  await addNewMessage(message, author);
 
-  return res.redirect('/')
+  return res.redirect("/");
 }

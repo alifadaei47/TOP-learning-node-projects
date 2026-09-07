@@ -1,4 +1,4 @@
-import { getAllMessages } from "../db.js";
+import { getAllMessages } from "../db/queries.js";
 
 export async function indexRouterController(req, res) {
   const messages = await getAllMessages();

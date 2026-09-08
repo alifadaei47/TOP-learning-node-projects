@@ -10,9 +10,11 @@
   <% if(categories.length > 0) { %>
     <ul>
       <% categories.forEach(c => { %>
-        <li><a href="/category?name"></a></li>
+        <li><a href="/<%= c.name.toLowerCase() %>"><%= c.name %></a></li>
       <% }) %>
     </ul>
+  <% } else { %>
+    <p>No Category Found!</p>
   <% } %>
 </body>
 </html>

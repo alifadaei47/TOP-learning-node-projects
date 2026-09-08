@@ -1,8 +1,8 @@
 import { getAllCategories } from "../db/queries.js";
 
-export async function getAllCategoriesCtrl() {
+export async function getAllCategoriesCtrl(req, res) {
   const categories = await getAllCategories();
-  console.log(categories);
+  res.render('index', {categories})
   return;
 }
 

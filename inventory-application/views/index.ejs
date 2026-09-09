@@ -12,11 +12,11 @@
       <% categories.forEach(c => { %>
         <li>
           <div>
-            <a href="/categories/<%= c.name.toLowerCase() %>"><%= c.name %></a>
-            <form action="/<%= c.name.toLowerCase() %>/delete" onsubmit="confirm('Are you sure you want to delete this catergory?')">
+            <a href="/categories/<%= c.name %>"><%= c.name %></a>
+            <form action="/<%= c.name %>/delete" onsubmit="confirm('Are you sure you want to delete this catergory?')">
               <button type="submit">Delete</button>
             </form>
-            <form action="/<%= c.name.toLowerCase() %>/update">
+            <form action="/<%= c.name %>/update">
               <button type="submit">Update</button>
             </form>
           </div>

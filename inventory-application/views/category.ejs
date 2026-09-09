@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <% if(items.length > 0) { %>
+    <% items.forEach(item=> { %>
+      <div>
+        <p><%= item.title %></p>
+        <form action="/<%= item.title %>/delete" onsubmit="confirm('Are you sure you want to delete this book?')">
+          <button type="submit">Delete</button>
+        </form>
+        <form action="/<%= item.title %>/update">
+          <button type="submit">Update</button>
+        </form>
+      </div>
+    <% }) %>
+  <% } else {%>
+    <p>There is no book in this category yet!</p>
+  <% } %>
+</body>
+</html>

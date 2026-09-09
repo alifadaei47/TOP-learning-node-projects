@@ -6,6 +6,17 @@
   <title>Document</title>
 </head>
 <body>
+  <h1>Books</h1>
+
+  <div>
+    <p>Add a new book</p>
+    <form action="/categories/<%= category %>/add-book" method="POST">
+      <label for="book">Book's name: </label>
+      <input type="text" min="2" max="150" name="book" id="book">
+      <button type="submit">Add</button>
+    </form>
+  </div>
+
   <% if(items.length > 0) { %>
     <% items.forEach(item=> { %>
       <div>

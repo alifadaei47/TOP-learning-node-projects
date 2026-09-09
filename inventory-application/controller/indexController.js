@@ -8,7 +8,7 @@ export async function getAllCategoriesCtrl(req, res) {
 }
 
 export async function createNewCategoryCtrl(req, res) {
-  const { category } = req.query;
+  const { category } = req.body;
   await addNewCategory(category);
   res.redirect("/");
 }

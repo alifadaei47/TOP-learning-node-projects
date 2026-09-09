@@ -11,3 +11,7 @@ categoriesRouter.get(
   "/:category/update",
   categoriesController.updateCategoryCtrl,
 );
+categoriesRouter.post(
+  "/:category/add-book",
+  categoriesController.addNewBookCtrl,
+);

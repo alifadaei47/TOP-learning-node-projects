@@ -5,7 +5,7 @@ export async function getAllItemsCtrl(req, res) {
   const { category } = req.params;
   const items = await getAllItems(category);
 
-  res.render("category", { items });
+  res.render("category", { items, category });
 }
 
 export async function deleteCategoryCtrl(req, res) {
@@ -16,6 +16,12 @@ export async function deleteCategoryCtrl(req, res) {
 }
 
 export async function updateCategoryCtrl(req, res) {
-  console.log(req.params.category)
+  console.log(req.params.category);
+  return;
+}
+
+export async function addNewBookCtrl(req, res) {
+  const { category } = req.params;
+  console.log(req.body);
   return;
 }

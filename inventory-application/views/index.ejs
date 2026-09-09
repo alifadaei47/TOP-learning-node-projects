@@ -7,6 +7,14 @@
 </head>
 <body>
   <h1>Book Categories</h1>
+  <div>
+    <p>Create a new category</p>
+    <form action="/create-category">
+      <label for="category">Category name: </label>
+      <input type="text" min="5" max="50" name="category" id="category">
+      <button type="submit">Create</button>
+    </form>
+  </div>
   <% if(categories.length > 0) { %>
     <ul>
       <% categories.forEach(c => { %>

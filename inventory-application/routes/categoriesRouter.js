@@ -7,3 +7,7 @@ categoriesRouter.get(
   "/:category/delete",
   categoriesController.deleteCategoryCtrl,
 );
+categoriesRouter.get(
+  "/:category/update",
+  categoriesController.updateCategoryCtrl,
+);

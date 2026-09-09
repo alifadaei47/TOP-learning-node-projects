@@ -10,8 +10,12 @@ export async function getAllItemsCtrl(req, res) {
 
 export async function deleteCategoryCtrl(req, res) {
   const { category } = req.params;
-  console.log(category)
   await deleteCategory(category);
 
   res.redirect("/");
+}
+
+export async function updateCategoryCtrl(req, res) {
+  console.log(req.params.category)
+  return;
 }

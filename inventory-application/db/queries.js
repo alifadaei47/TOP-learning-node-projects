@@ -19,8 +19,11 @@ export async function deleteCategory(category) {
     [`${category}`],
   );
 
-  await pool.query(
-    "DELETE FROM categories WHERE name = $1;",
-    [`${category}`],
-  );
+  await pool.query("DELETE FROM categories WHERE name = $1;", [`${category}`]);
+}
+
+export async function addNewCategory(category) {
+  await pool.query("INSERT INTO categories (name) VALUES ($1)", [
+    `${category}`,
+  ]);
 }

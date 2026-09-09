@@ -6,9 +6,21 @@ export async function getAllCategories() {
 }
 
 export async function getAllItems(category) {
-  const {rows} = await pool.query(
+  const { rows } = await pool.query(
     "SELECT items.* FROM items JOIN categories ON items.category_id = categories.id WHERE categories.name = $1;",
-    [`${category}`]
+    [`${category}`],
   );
   return rows;
+}
+
+export async function deleteCategory(category) {
+  await pool.query(
+    "DELETE FROM items WHERE category_id = (SELECT id FROM categories WHERE name = $1);",
+    [`${category}`],
+  );
+
+  await pool.query(
+    "DELETE FROM categories WHERE name = $1;",
+    [`${category}`],
+  );
 }

@@ -1,6 +1,7 @@
 import { getAllItems } from "../db/queries.js";
 import { deleteCategory } from "../db/queries.js";
 import { addNewBook } from "../db/queries.js";
+import { deleteBook } from "../db/queries.js";
 
 export async function getAllItemsCtrl(req, res) {
   const { category } = req.params;
@@ -25,6 +26,14 @@ export async function addNewBookCtrl(req, res) {
   const { category } = req.params;
   const title = req.body.book;
   await addNewBook(title, category);
+
+  const url = `/categories/${category}`;
+  res.redirect(url);
+}
+
+export async function deleteBookCtrl(req, res) {
+  const { category, title } = req.params;
+  await deleteBook(category, title);
 
   const url = `/categories/${category}`;
   res.redirect(url);

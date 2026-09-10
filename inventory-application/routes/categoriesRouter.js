@@ -7,11 +7,18 @@ categoriesRouter.get(
   "/:category/delete",
   categoriesController.deleteCategoryCtrl,
 );
-categoriesRouter.get(
-  "/:category/update",
-  categoriesController.updateCategoryCtrl,
-);
+
 categoriesRouter.post(
   "/:category/add-book",
   categoriesController.addNewBookCtrl,
+);
+
+// categoriesRouter.get(
+//   "/:category/update",
+//   categoriesController.updateCategoryCtrl,
+// );
+
+categoriesRouter.post(
+  "/:category/:title/delete",
+  categoriesController.deleteBookCtrl,
 );

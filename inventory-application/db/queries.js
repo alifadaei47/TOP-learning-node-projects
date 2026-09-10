@@ -34,3 +34,10 @@ export async function addNewBook(title, category) {
     [`${title}`, `${category}`],
   );
 }
+
+export async function deleteBook(category, title) {
+  await pool.query(
+    "DELETE FROM items WHERE title = $2 AND category_id = (SELECT id FROM categories WHERE name = $1);",
+    [`${category}`, `${title}`],
+  );
+}

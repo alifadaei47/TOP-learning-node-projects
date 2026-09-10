@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book Inventory</title>
 </head>
+
 <body>
   <h1>Book Categories</h1>
   <div>
@@ -16,23 +18,24 @@
     </form>
   </div>
   <% if(categories.length > 0) { %>
-    <ul>
-      <% categories.forEach(c => { %>
-        <li>
-          <div>
-            <a href="/categories/<%= c.name %>"><%= c.name %></a>
-            <form action="/categories/<%= c.name %>/delete" method="GET" onsubmit="confirm('Are you sure you want to delete this catergory?')">
-              <button type="submit">Delete</button>
-            </form>
-            <form action="/categories/<%= c.name %>/update" method="GET">
-              <button type="submit">Update</button>
-            </form>
-          </div>
-        </li>
-      <% }) %>
-    </ul>
+  <ul>
+    <% categories.forEach(c => { %>
+    <li>
+      <div>
+        <a href="/categories/<%= c.name %>"><%= c.name %></a>
+        <form action="/categories/<%= c.name %>/delete" method="GET" onsubmit="confirm('Are you sure you want to delete this catergory?')">
+          <button type="submit">Delete</button>
+        </form>
+        <form action="/categories/<%= c.name %>/update" method="GET">
+          <button type="submit">Update</button>
+        </form>
+      </div>
+    </li>
+    <% }) %>
+  </ul>
   <% } else { %>
-    <p>No Category Found!</p>
+  <p>No Category Found!</p>
   <% } %>
 </body>
+
 </html>

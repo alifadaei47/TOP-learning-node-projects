@@ -23,12 +23,12 @@
   <% items.forEach(item=> { %>
   <div>
     <p><%= item.title %></p>
-    
+
     <form action="/categories/<%= category %>/<%= item.title %>/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this book?')">
       <button type="submit">Delete</button>
     </form>
 
-    <form action="/categories/<%= category %>/<%= item.title %>/update">
+    <form action="/categories/<%= category %>/<%= item.title %>/update" method="GET">
       <button type="submit">Update</button>
     </form>
   </div>

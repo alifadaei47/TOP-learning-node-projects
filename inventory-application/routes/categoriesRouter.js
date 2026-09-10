@@ -3,7 +3,8 @@ import * as categoriesController from "../controller/categoriesController.js";
 export const categoriesRouter = Router();
 
 categoriesRouter.get("/:category", categoriesController.getAllItemsCtrl);
-categoriesRouter.get(
+
+categoriesRouter.post(
   "/:category/delete",
   categoriesController.deleteCategoryCtrl,
 );
@@ -13,7 +14,7 @@ categoriesRouter.post(
   categoriesController.addNewBookCtrl,
 );
 
-// categoriesRouter.get(
+// categoriesRouter.post(
 //   "/:category/update",
 //   categoriesController.updateCategoryCtrl,
 // );

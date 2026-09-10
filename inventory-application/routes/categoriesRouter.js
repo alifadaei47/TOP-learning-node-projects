@@ -14,10 +14,15 @@ categoriesRouter.post(
   categoriesController.addNewBookCtrl,
 );
 
-// categoriesRouter.post(
-//   "/:category/update",
-//   categoriesController.updateCategoryCtrl,
-// );
+categoriesRouter.get(
+  "/:category/update",
+  categoriesController.updateCategoryGetCtrl,
+);
+
+categoriesRouter.post(
+  "/:category/update",
+  categoriesController.updateCategoryPostCtrl,
+);
 
 categoriesRouter.post(
   "/:category/:title/delete",

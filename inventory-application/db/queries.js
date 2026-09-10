@@ -28,6 +28,13 @@ export async function addNewCategory(category) {
   ]);
 }
 
+export async function updateCategory(newName, oldName) {
+  await pool.query("UPDATE categories SET name = $1 WHERE name = $2;", [
+    `${newName}`,
+    `${oldName}`,
+  ]);
+}
+
 export async function addNewBook(title, category) {
   await pool.query(
     "INSERT INTO items (title, category_id) VALUES ($1, (SELECT id FROM categories WHERE name = $2));",

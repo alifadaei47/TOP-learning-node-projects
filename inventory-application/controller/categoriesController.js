@@ -1,5 +1,6 @@
 import { getAllItems } from "../db/queries.js";
 import { deleteCategory } from "../db/queries.js";
+import { updateCategory } from "../db/queries.js";
 import { addNewBook } from "../db/queries.js";
 import { deleteBook } from "../db/queries.js";
 
@@ -17,9 +18,17 @@ export async function deleteCategoryCtrl(req, res) {
   res.redirect("/");
 }
 
-export async function updateCategoryCtrl(req, res) {
-  console.log(req.params.category);
-  return;
+export async function updateCategoryGetCtrl(req, res) {
+  const { category } = req.params;
+  res.render("updateCategory", { category });
+}
+
+export async function updateCategoryPostCtrl(req, res) {
+  const oldName = req.params.category;
+  const newName = req.body.category;
+  
+  await updateCategory(newName, oldName)
+  res.redirect("/");
 }
 
 export async function addNewBookCtrl(req, res) {

@@ -27,3 +27,10 @@ export async function addNewCategory(category) {
     `${category}`,
   ]);
 }
+
+export async function addNewBook(title, category) {
+  await pool.query(
+    "INSERT INTO items (title, category_id) VALUES ($1, (SELECT id FROM categories WHERE name = $2));",
+    [`${title}`, `${category}`],
+  );
+}

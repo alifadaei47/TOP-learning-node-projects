@@ -1,5 +1,6 @@
 import { getAllItems } from "../db/queries.js";
 import { deleteCategory } from "../db/queries.js";
+import { addNewBook } from "../db/queries.js";
 
 export async function getAllItemsCtrl(req, res) {
   const { category } = req.params;
@@ -22,6 +23,9 @@ export async function updateCategoryCtrl(req, res) {
 
 export async function addNewBookCtrl(req, res) {
   const { category } = req.params;
-  console.log(req.body);
-  return;
+  const title = req.body.book;
+  await addNewBook(title, category);
+
+  const url = `/categories/${category}`;
+  res.redirect(url);
 }

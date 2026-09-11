@@ -48,3 +48,10 @@ export async function deleteBook(category, title) {
     [`${category}`, `${title}`],
   );
 }
+
+export async function updateBook(newTitle, oldTitle, category) {
+  await pool.query(
+    "UPDATE items SET title = $1 WHERE title = $2 AND category_id = (SELECT id FROM categories WHERE name = $3);",
+    [newTitle, oldTitle, category],
+  );
+}

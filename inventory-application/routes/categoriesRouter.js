@@ -34,7 +34,7 @@ categoriesRouter.get(
   categoriesController.updateBookGetCtrl,
 );
 
-// categoriesRouter.post(
-//   "/:category/:title/update",
-//   categoriesController.updateBookPostCtrl,
-// );
+categoriesRouter.post(
+  "/:category/:title/update",
+  categoriesController.updateBookPostCtrl,
+);

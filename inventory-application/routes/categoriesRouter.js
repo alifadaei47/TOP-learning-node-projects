@@ -28,3 +28,13 @@ categoriesRouter.post(
   "/:category/:title/delete",
   categoriesController.deleteBookCtrl,
 );
+
+categoriesRouter.get(
+  "/:category/:title/update",
+  categoriesController.updateBookGetCtrl,
+);
+
+// categoriesRouter.post(
+//   "/:category/:title/update",
+//   categoriesController.updateBookPostCtrl,
+// );

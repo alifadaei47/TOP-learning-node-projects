@@ -4,38 +4,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Inventory</title>
+  <meta name="description" content="Manage your book collection by category.">
+  <title>Categories | Shelf</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
-  <h1>Book Categories</h1>
-  <div>
-    <p>Create a new category</p>
-    <form action="/create-category" method="POST">
-      <label for="category">Category name: </label>
-      <input type="text" min="4" max="50" name="category" id="category">
-      <button type="submit">Create</button>
-    </form>
-  </div>
-  <% if(categories.length > 0) { %>
-  <ul>
-    <% categories.forEach(c => { %>
-    <li>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">Shelf</a>
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a href="/">Categories</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-intro" aria-labelledby="page-title">
       <div>
-        <a href="/categories/<%= c.name %>"><%= c.name %></a>
-        <form action="/categories/<%= c.name %>/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this catergory?')">
-          <button type="submit">Delete</button>
-        </form>
-        <form action="/categories/<%= c.name %>/update" method="GET">
-          <button type="submit">Update</button>
-        </form>
+        <p class="eyebrow">Your library</p>
+        <h1 id="page-title">Book categories</h1>
+        <p class="lede">Keep your collection organized, one shelf at a time.</p>
       </div>
-    </li>
-    <% }) %>
-  </ul>
-  <% } else { %>
-  <p>No Category Found!</p>
-  <% } %>
+      <p class="stat"><strong><%= categories.length %></strong> categories</p>
+    </section>
+
+    <div class="content-grid">
+      <section class="panel" aria-labelledby="categories-heading">
+        <h2 id="categories-heading" class="panel-label">All categories</h2>
+        <% if(categories.length > 0) { %>
+        <div class="category-list">
+          <% categories.forEach(c => { %>
+          <div class="category-row">
+            <a class="category-name" href="/categories/<%= c.name %>"><%= c.name %></a>
+            <div class="item-actions">
+              <a class="text-link" href="/categories/<%= c.name %>/update">Edit</a>
+              <form class="inline-form" action="/categories/<%= c.name %>/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this category and its books?')">
+                <button class="button button--danger" type="submit">Delete</button>
+              </form>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+        <% } else { %>
+        <div class="empty-state">
+          <p>No categories yet.</p>
+          <p>Create your first category to start building your collection.</p>
+        </div>
+        <% } %>
+      </section>
+
+      <aside class="panel" aria-labelledby="create-heading">
+        <h2 id="create-heading" class="panel-label">New category</h2>
+        <form action="/create-category" method="POST">
+          <div class="field">
+            <label for="category">Category name</label>
+            <input type="text" minlength="4" maxlength="50" name="category" id="category" placeholder="e.g. Modern fiction" required>
+          </div>
+          <button class="button" type="submit">Create category</button>
+        </form>
+      </aside>
+    </div>
+  </main>
 </body>
 
 </html>

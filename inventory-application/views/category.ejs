@@ -4,38 +4,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta name="description" content="Manage the books in this category.">
+  <title><%= category %> | Shelf</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
-  <h1>Books</h1>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">Shelf</a>
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a href="/">Categories</a>
+      </nav>
+    </div>
+  </header>
 
-  <div>
-    <p>Add a new book</p>
-    <form action="/categories/<%= category %>/add-book" method="POST">
-      <label for="book">Book's name: </label>
-      <input type="text" min="2" max="150" name="book" id="book">
-      <button type="submit">Add</button>
-    </form>
-  </div>
+  <main class="page-shell">
+    <a class="breadcrumb" href="/">&larr; All categories</a>
+    <section class="page-intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Category</p>
+        <h1 id="page-title"><%= category %></h1>
+        <p class="lede">The books currently filed in this part of your collection.</p>
+      </div>
+      <p class="stat"><strong><%= items.length %></strong> books</p>
+    </section>
 
-  <% if(items.length > 0) { %>
-  <% items.forEach(item=> { %>
-  <div>
-    <p><%= item.title %></p>
+    <div class="content-grid">
+      <section class="panel" aria-labelledby="books-heading">
+        <h2 id="books-heading" class="panel-label">Books in this category</h2>
+        <% if(items.length > 0) { %>
+        <div class="book-list">
+          <% items.forEach(item => { %>
+          <div class="book-row">
+            <p class="book-name"><%= item.title %></p>
+            <div class="item-actions">
+              <a class="text-link" href="/categories/<%= category %>/<%= item.title %>/update">Edit</a>
+              <form class="inline-form" action="/categories/<%= category %>/<%= item.title %>/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this book?')">
+                <button class="button button--danger" type="submit">Delete</button>
+              </form>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+        <% } else { %>
+        <div class="empty-state">
+          <p>This category is empty.</p>
+          <p>Add a book using the form to the right.</p>
+        </div>
+        <% } %>
+      </section>
 
-    <form action="/categories/<%= category %>/<%= item.title %>/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this book?')">
-      <button type="submit">Delete</button>
-    </form>
-
-    <form action="/categories/<%= category %>/<%= item.title %>/update" method="GET">
-      <button type="submit">Update</button>
-    </form>
-  </div>
-  <% }) %>
-  <% } else {%>
-  <p>There is no book in this category yet!</p>
-  <% } %>
+      <aside class="panel" aria-labelledby="add-heading">
+        <h2 id="add-heading" class="panel-label">Add a book</h2>
+        <form action="/categories/<%= category %>/add-book" method="POST">
+          <div class="field">
+            <label for="book">Book title</label>
+            <input type="text" minlength="2" maxlength="150" name="book" id="book" placeholder="e.g. The Left Hand of Darkness" required>
+          </div>
+          <button class="button" type="submit">Add book</button>
+        </form>
+      </aside>
+    </div>
+  </main>
 </body>
 
 </html>

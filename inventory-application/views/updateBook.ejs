@@ -8,9 +8,9 @@
 </head>
 
 <body>
-  <p>Update category</p>
-  <form action="/categories/<%= category %>/update" method="POST">
-    <input type="text" min="4" max="50" name="category" id="category" value="<%= category %>"/>
+  <p>Update book</p>
+  <form action="/categories/<%= category %>/<%= title %>/update" method="POST">
+    <input type="text" min="4" max="50" name="title" id="title" value="<%= title %>"/>
     <button type="submit">Update</button>
   </form>
 </body>

@@ -24,6 +24,9 @@
       <section aria-labelledby="page-title">
         <p class="eyebrow">Book settings</p>
         <h1 id="page-title">Edit book</h1>
+
+        <%- include('partials/errors.ejs') %>
+
         <div class="form-panel">
           <form
             action="/categories/<%= category %>/<%= title %>/update"

@@ -55,11 +55,12 @@
       </section>
 
       <aside class="panel" aria-labelledby="create-heading">
+        <%- include('partials/errors.ejs') %>
         <h2 id="create-heading" class="panel-label">New category</h2>
         <form action="/create-category" method="POST">
           <div class="field">
             <label for="category">Category name</label>
-            <input type="text" minlength="4" maxlength="50" name="category" id="category" placeholder="e.g. Modern fiction" required>
+            <input type="text" name="category" id="category" placeholder="e.g. Modern fiction" required>
           </div>
           <button class="button" type="submit">Create category</button>
         </form>

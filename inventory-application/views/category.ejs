@@ -56,11 +56,12 @@
       </section>
 
       <aside class="panel" aria-labelledby="add-heading">
+        <%- include('partials/errors.ejs') %>
         <h2 id="add-heading" class="panel-label">Add a book</h2>
         <form action="/categories/<%= category %>/add-book" method="POST">
           <div class="field">
             <label for="book">Book title</label>
-            <input type="text" minlength="2" maxlength="150" name="book" id="book" placeholder="e.g. The Left Hand of Darkness" required>
+            <input type="text" name="book" id="book" placeholder="e.g. The Left Hand of Darkness" required>
           </div>
           <button class="button" type="submit">Add book</button>
         </form>

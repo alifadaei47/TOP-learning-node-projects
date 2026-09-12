@@ -1,9 +1,34 @@
+import { body } from "express-validator";
 import { getAllItems } from "../db/queries.js";
 import { deleteCategory } from "../db/queries.js";
 import { updateCategory } from "../db/queries.js";
 import { addNewBook } from "../db/queries.js";
 import { deleteBook } from "../db/queries.js";
 import { updateBook } from "../db/queries.js";
+
+import { body, validationResult } from "express-validator";
+
+const validateCategory = [
+  body("category")
+    .trim()
+    .notEmpty()
+    .withMessage("Category name can not be empty.")
+    .isAlpha()
+    .withMessage("Category name must only contain alphabet letters.")
+    .isLength({ min: 4, max: 25 })
+    .withMessage(`Category name must be between 4 and 25 characters.`),
+];
+
+const validateBook = [
+  body("title")
+    .trim()
+    .notEmpty()
+    .withMessage("Book name can not be empty.")
+    .isAlpha()
+    .withMessage("Book name must only contain alphabet letters.")
+    .isLength({ min: 4, max: 50 })
+    .withMessage(`Book name must be between 4 and 50 characters.`),
+];
 
 export async function getAllItemsCtrl(req, res) {
   const { category } = req.params;
@@ -59,8 +84,7 @@ export async function updateBookPostCtrl(req, res) {
   const oldTitle = req.params.title;
   const newTitle = req.body.title;
 
-
-  await updateBook(newTitle, oldTitle, category)
+  await updateBook(newTitle, oldTitle, category);
 
   const url = `/categories/${category}`;
   res.redirect(url);
